@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Instascan</title>
+    <script type="text/javascript" src="js/instascan.min.js"></script>
+</head>
+
+<body>
+    <video id="preview"></video>
+    <p id="console-para"></p>
+    <script type="text/javascript">
+    var consolePara = document.getElementById("console-para");
+    let scanner = new Instascan.Scanner({
+        continuous: true,
+        video: document.getElementById('preview'),
+        mirror: false,
+        captureImage: false,
+        backgroundScan: false,
+        refractoryPeriod: 5000,
+        scanPeriod: 1
+    });
+    scanner.addListener('scan', function(content) {
+        consolePara.innerHTML = "content,";
+    });
+    Instascan.Camera.getCameras().then(function(cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]).then(function () { consolePara.innerHTML += " One of them cameras" })
+            .catch(function (err) { consolePara.innerHTML += err });
+        } else {
+            consolePara.innerHTML += ' No cameras found.';
+        }
+    }).catch(function(e) {
+        consolePara.innerHTML += 'error: ' + e;
+    });
+    </script>
+</body>
+
+</html>
