@@ -28,12 +28,12 @@
     });
     Instascan.Camera.getCameras().then(function(cameras) {
         if (cameras.length > 0) {
-            // var cameraList = document.getElementById('camera-list');
-            //foreach (camera in cameras){
-            //    consolePara.innerHTML += "+1";
-            //}
-            scanner.start(cameras[1]).then(function () { consolePara.innerHTML += " Camera selected" })
-            .catch(function (err) { consolePara.innerHTML += err });
+            var cameraList = document.getElementById('camera-list');
+            foreach (camera in cameras){
+                consolePara.innerHTML += "+1";
+            }
+            // scanner.start(cameras[1]).then(function () { consolePara.innerHTML += " Camera selected" })
+            // .catch(function (err) { consolePara.innerHTML += err });
         } else {
             consolePara.innerHTML += ' No cameras found.';
         }
