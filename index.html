@@ -27,10 +27,14 @@
         consolePara.innerHTML = '<a href=' + content + '>' + content + '</a>';
     });
     Instascan.Camera.getCameras().then(function(cameras) {
+        var cameraList = document.getElementById('camera-list');
         if (cameras.length > 0) {
-            var cameraList = document.getElementById('camera-list');
-            foreach (camera in cameras){
-                consolePara.innerHTML += "+1";
+            try {
+                foreach (camera in cameras){
+                    consolePara.innerHTML += "+1";
+                }
+            catch(err) {
+                consolePara.innerHTML += err;
             }
             // scanner.start(cameras[1]).then(function () { consolePara.innerHTML += " Camera selected" })
             // .catch(function (err) { consolePara.innerHTML += err });
