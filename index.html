@@ -22,12 +22,12 @@
         refractoryPeriod: 5000,
         scanPeriod: 8
     });
-    scanner.addListener('scan', function(content) {
-        consolePara.innerHTML = '<a href=' + content + '>' + content + '</a>';
-    });
+      //  scanner.addListener('scan', function(content) {
+     //   consolePara.innerHTML = '<a href=' + content + '>' + content + '</a>';
+    // });
     Instascan.Camera.getCameras().then(function(cameras) {
         if (cameras.length > 0) {
-            var cameraList = document.getElementById('camera-list');
+            // var cameraList = document.getElementById('camera-list');
             foreach (camera in cameras){
                 consolePara.innerHTML += "+1";
             }
