@@ -31,12 +31,12 @@
             scanner.start(cameras[1]).then(function () { consolePara.innerHTML += " Camera selected" })
             .catch(function (err) { consolePara.innerHTML += err });
         } else {
-            consolePara.innerHTML += ' No cameras found.';
+            consolePara.innerHTML = ' No cameras found.';
         }
         // scanner.start(cameras[1]).then(function () { consolePara.innerHTML += " Camera selected" })
         //    .catch(function (err) { consolePara.innerHTML += err });
     }).catch(function(e) {
-        consolePara.innerHTML += 'error: ' + e;
+        consolePara.innerHTML = e;
     });
     </script>
 </body>
