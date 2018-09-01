@@ -11,7 +11,6 @@
 <body>
     <video id="preview"></video>
     <p id="console-para"></p>
-    <ul id="camera-list"></ul>
     <script type="text/javascript">
     var consolePara = document.getElementById("console-para");
     let scanner = new Instascan.Scanner({
@@ -27,18 +26,10 @@
         consolePara.innerHTML = '<a href=' + content + '>' + content + '</a>';
     });
     Instascan.Camera.getCameras().then(function(cameras) {
-        var cameraList = document.getElementById('camera-list');
         consolePara.innerHTML += cameras.length;
         if (cameras.length > 0) {
-            try {
-                foreach (camera in cameras){
-                    consolePara.innerHTML += "+1";
-                }
-            catch(err) {
-                consolePara.innerHTML += err;
-            }
-            // scanner.start(cameras[1]).then(function () { consolePara.innerHTML += " Camera selected" })
-            // .catch(function (err) { consolePara.innerHTML += err });
+            scanner.start(cameras[1]).then(function () { consolePara.innerHTML += " Camera selected" })
+            .catch(function (err) { consolePara.innerHTML += err });
         } else {
             consolePara.innerHTML += ' No cameras found.';
         }
