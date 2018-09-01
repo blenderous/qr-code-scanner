@@ -28,6 +28,7 @@
     });
     Instascan.Camera.getCameras().then(function(cameras) {
         var cameraList = document.getElementById('camera-list');
+        consolePara.innerHTML += cameras.length;
         if (cameras.length > 0) {
             try {
                 foreach (camera in cameras){
